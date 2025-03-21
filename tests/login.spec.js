@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const LoginPage = require('../pages/login.page');
 
 test.beforeEach(async ({ page }) => {
-    await page.goto('');
+    await page.goto('https://www.saucedemo.com/');
     page.loginPage = new LoginPage(page);
 });
 

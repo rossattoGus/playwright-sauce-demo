@@ -7,10 +7,6 @@ test.beforeEach(async ({ page }) => {
     await loginPage.login('standard_user', 'secret_sauce');
 });
 
-// poderia deixar mais dinâmico -> sempre pegar o primeiro 
-// item e verificar se é o menor preço da página
-// classe="invectory_list"
-
 test('Ordering products by lowest price', async({ page }) => {
     await page.selectOption('.product_sort_container', 'lohi');
     
@@ -18,7 +14,6 @@ test('Ordering products by lowest price', async({ page }) => {
 
     const prices = pricesText.map(price => parseFloat(price.replace('$', '')));
 
-    // Por que três pontinho (...prices)?
     const minPrice = Math.min(...prices);
 
     const firstItemText = await page.locator('.inventory_item_price').first().textContent();
